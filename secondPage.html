@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>返回测试</title>
+    <style>
+        span{
+            display: inline-block;
+            text-align: center;
+            width: 80px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 0.7rem;
+            color: #fff;
+            background: #78a5f1;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>第二页</h1>
+<div>
+    <span class="pageUpBn">上一页</span>
+    <span class="overleafBn" id="forward">下一页</span>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+
+    $(".pageUpBn").click(function(){
+        window.history.back(-1);
+    })
+    $(".overleafBn").click(function(){
+        console.log("没有下一页了！")
+    })
+
+
+
+    $(function(){
+        pushHistory();
+        window.addEventListener("popstate", function(e) {
+            alert("返回的地址");
+//            window.location = 返回的地址
+        }, false);
+        function pushHistory() {
+            var state = {
+                title: "title",
+            url: "#"
+        };
+            window.history.pushState(state, "title", "#");
+        }
+    });
+
+
+
+
+</script>
+</html>
